@@ -1,7 +1,7 @@
 import Domain.librarie
 
 
-def create(lst_librarie, id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client) -> object:
+def create(lst_librarie, id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client):
     '''
     Creeaza o librarie
     :rtype: object
@@ -37,7 +37,6 @@ def read(lst_librarie, id_librarie=None):
 def update(lst_librarie, new_librarie):
     '''
     Modifica o librarie
-    :rtype: object
     :param carte: 
     :param carte1: 
     :param pret: 
@@ -53,6 +52,7 @@ def update(lst_librarie, new_librarie):
             new_librarii.append(new_librarie)
         else:
             new_librarii.append(librarie)
+
     return new_librarii
 
 def delete(lst_librarie, id_librarie):

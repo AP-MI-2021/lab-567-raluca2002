@@ -1,4 +1,4 @@
-def creeaza_librarie(id_carte: int,tiltu_carte,gen_carte,pret,tip_reducere_client ) :
+def creeaza_librarie(id_librarie: int,tiltu_carte,gen_carte,pret,tip_reducere_client ) :
     """
     Creeaza o vanzare pentru carte
     :param id_carte: Id ul cartii
@@ -10,21 +10,21 @@ def creeaza_librarie(id_carte: int,tiltu_carte,gen_carte,pret,tip_reducere_clien
     """
 
     return {
-        'id' : id_carte,
-        'titlu' : tiltu_carte,
-        'gen' : gen_carte,
-        'pret' : pret,
-        'reducere' :  tip_reducere_client,
+        'id': id_librarie,
+        'titlu': tiltu_carte,
+        'gen': gen_carte,
+        'pret': pret,
+        'reducere':  tip_reducere_client,
     }
 
 
-def get_id(vanzare) :
+def get_id(librarie):
     """
     Getter pentru id ul prajiturii
     :param vanzare: cartea
     :return: id ul cartii
     """
-    return vanzare['id']
+    return librarie['id']
 
 def get_titlu_carte(librarie):
     '''
@@ -56,7 +56,7 @@ def get_tip_reducere_client(librarie):
     :param librarie:
     :return:
     '''
-    return librarie['tip']
+    return librarie['reducere']
 
 def get_str(librarie):
     return f'Libraria cu id-ul {get_id(librarie)}, cu titlul {get_titlu_carte(librarie)}, genul {get_gen_carte(librarie)}, pretul {get_pret(librarie)} si tipul de reducere {get_tip_reducere_client(librarie)}'
