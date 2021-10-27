@@ -1,7 +1,8 @@
-import Domain.librarie
+from Domain.librarie import creeaza_librarie, get_id
 
 
-def create(lst_librarie, id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client):
+
+def create(lst_librarie, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client):
     '''
     Creeaza o librarie
     :rtype: object
@@ -13,11 +14,11 @@ def create(lst_librarie, id_librarie, titlu_carte, gen_carte, pret, tip_reducere
     :param tip_reducere_client:
     :return: o noua lista formata din lst_librarie si noua librarie adaugata
     '''
-    librarie = Domain.librarie.creeaza_librarie(id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client)
+    librarie = creeaza_librarie(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
     return lst_librarie + [librarie]
 
 
-def read(lst_librarie, id_librarie=None):
+def read(lst_librarie, id_carte=None):
     '''
     Citeste o librarie din baza de date
     :param lst_librarie: lista librariilor
@@ -26,7 +27,7 @@ def read(lst_librarie, id_librarie=None):
     '''
     librarie_cu_id = None
     for librarie in lst_librarie:
-        if Domain.librarie.get_id(librarie) == id_librarie:
+        if get_id(librarie) == id_carte:
             librarie_cu_id = librarie
     if librarie_cu_id:
         return librarie_cu_id
@@ -48,14 +49,14 @@ def update(lst_librarie, new_librarie):
     #lst_librarie = [p1:(1,cartea1), p2:(2, cartea2)], librarie=(2, cartea3)
     new_librarii = []
     for librarie in lst_librarie:
-        if Domain.librarie.get_id(librarie) != Domain.librarie.get_id(new_librarie):
+        if get_id(librarie) != get_id(new_librarie):
             new_librarii.append(new_librarie)
         else:
             new_librarii.append(librarie)
 
     return new_librarii
 
-def delete(lst_librarie, id_librarie):
+def delete(lst_librarie, id_carte):
     '''
     TO DO
     :param lst_librarie:
@@ -64,6 +65,6 @@ def delete(lst_librarie, id_librarie):
     '''
     new_librarie = []
     for librarie in lst_librarie:
-        if Domain.librarie.get_id(librarie) != id_librarie:
+        if get_id(librarie) != id_carte:
             new_librarie.append(librarie)
     return new_librarie

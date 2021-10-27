@@ -1,5 +1,7 @@
-def creeaza_librarie(id_librarie: int,tiltu_carte: str,gen_carte: str,pret: int,tip_reducere_client: str):
-    lista_librarie= [id_librarie, tiltu_carte, gen_carte, pret, tip_reducere_client]
+
+
+def creeaza_librarie(id_carte: int,tiltu_carte: str,gen_carte: str,pret: int,tip_reducere_client: str):
+    lista_librarie= [id_carte, tiltu_carte, gen_carte, pret, tip_reducere_client]
     return lista_librarie
 
 

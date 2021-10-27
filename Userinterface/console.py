@@ -11,12 +11,12 @@ def show_menu():
 
 
 def handle_add(librarii):
-     id_librarie = input('Dati id-ul librariei: ')
+     id_carte = input('Dati id-ul librariei: ')
      titlu_carte = input('Dati numele cartii: ')
      gen_carte = input('Dati genul cartii: ')
      pret = float(input('Dati pretul cartii: '))
      tip_reducere_client = input('Dati tipul reducerii: ')
-     return create(librarii,id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client)
+     return create(librarii,id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
 
 def handle_update(librarii):
     id_librarie = input('Dati id-ul librariei care se actualizeaza: ')
@@ -24,7 +24,7 @@ def handle_update(librarii):
     gen_carte = input('Dati noul gen al cartii: ')
     pret = float(input('Dati noul pret al cartii: '))
     tip_reducere_client = input('Dati noul tip al reducerii: ')
-    return update(librarii,creeaza_librarie(id_librarie, titlu_carte, gen_carte, pret, tip_reducere_client))
+    return update(librarii,creeaza_librarie(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
 
 def handle_discount(librarii):
     return discount_pt_reducere(librarii)
