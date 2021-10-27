@@ -26,4 +26,4 @@ def get_tip_reducere_client(lista_librarie):
     return lista_librarie[4]
 
 def get_str(librarie):
-    return f'Libraria cu id-ul {get_id(librarie)}, cu titlul {get_titlu_carte(librarie)}, genul {get_gen_carte(librarie)}, pretul {get_pret(librarie)} si tipul de reducere {get_tip_reducere_client(librarie)}'
+    return f'Carte cu id-ul {get_id(librarie)}, cu titlul {get_titlu_carte(librarie)}, genul {get_gen_carte(librarie)}, pretul {get_pret(librarie)} si tipul de reducere {get_tip_reducere_client(librarie)}'
