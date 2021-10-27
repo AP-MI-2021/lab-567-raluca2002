@@ -20,9 +20,9 @@ def creeaza_librarie(id_librarie: int,tiltu_carte,gen_carte,pret,tip_reducere_cl
 
 def get_id(librarie):
     """
-    Getter pentru id ul prajiturii
+    Getter pentru id ul librariei
     :param vanzare: cartea
-    :return: id ul cartii
+    :return: id ul librariei
     """
     return librarie['id']
 
