@@ -1,4 +1,4 @@
-from Domain.librarie import creeaza_librarie, get_id
+from Domain.librarie import creeaza_carte, get_id
 
 
 
@@ -14,7 +14,7 @@ def create(lst_librarie, id_carte, titlu_carte, gen_carte, pret, tip_reducere_cl
     :param tip_reducere_client:
     :return: o noua lista formata din lst_librarie si noua librarie adaugata
     '''
-    librarie = creeaza_librarie(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
+    librarie = creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
     return lst_librarie + [librarie]
 
 

@@ -1,4 +1,4 @@
-from Domain.librarie import get_tip_reducere_client, creeaza_librarie, get_pret, get_gen_carte, get_titlu_carte, get_id
+from Domain.librarie import get_tip_reducere_client, creeaza_carte, get_pret, get_gen_carte, get_titlu_carte, get_id
 
 
 def discount_pt_reducere(librarii):
@@ -11,7 +11,7 @@ def discount_pt_reducere(librarii):
     new_lst = []
     for vanz in librarii:
         if get_tip_reducere_client(vanz)  == 'silver':
-            vanz_noua = creeaza_librarie( get_id(vanz),
+            vanz_noua = creeaza_carte( get_id(vanz),
                                      get_titlu_carte(vanz),
                                      get_gen_carte(vanz),
                                      get_pret(vanz)-get_pret(vanz)*0.05,
@@ -19,7 +19,7 @@ def discount_pt_reducere(librarii):
                                    )
             new_lst.append(vanz_noua)
         elif get_tip_reducere_client(vanz) == 'gold':
-            carte_noua = creeaza_librarie(get_id(vanz),
+            carte_noua = creeaza_carte(get_id(vanz),
                                           get_titlu_carte(vanz),
                                           get_gen_carte(vanz),
                                           get_pret(vanz)-get_pret(vanz)*0.1,

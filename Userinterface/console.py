@@ -1,4 +1,4 @@
-from Domain.librarie import get_str, creeaza_librarie
+from Domain.librarie import get_str, creeaza_carte
 from Logic.crud import create, update, delete
 from Logic.functionalitati import discount_pt_reducere
 
@@ -24,7 +24,7 @@ def handle_update(librarii):
     gen_carte = input('Dati noul gen al cartii: ')
     pret = float(input('Dati noul pret al cartii: '))
     tip_reducere_client = input('Dati noul tip al reducerii: ')
-    return update(librarii,creeaza_librarie(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
+    return update(librarii,creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
 
 def handle_discount(librarii):
     return discount_pt_reducere(librarii)
