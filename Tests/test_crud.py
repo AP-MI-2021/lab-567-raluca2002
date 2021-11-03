@@ -1,7 +1,10 @@
 from typing import List, Dict, Any
 
-from Domain.librarie import creeaza_carte, get_id
+from Domain.carte import creeaza_carte, get_id
 from Logic.crud import create, read, update, delete
+from Tests.test_discount_reducere import test_discount_pt_reducere
+from Tests.test_modificare_gen import  test_modifica_gen_carte
+from Tests.test_pret_minim import test_pret_minim
 
 
 def get_data():
@@ -12,42 +15,45 @@ def get_data():
             creeaza_carte(5, 't5', 'gen5', 560, 'silver'),
             ]
 def test_create():
-    librarii = get_data()
+    carti = get_data()
     params = (100, 'tnew', 'gen new', 2021, 'gold')
     t_new = creeaza_carte(*params)
-    new_librarii: object = create(librarii, *params)
-    assert len(new_librarii) == len(librarii)+1
+    new_carti = create(carti, *params)
+    assert len(new_carti) == len(carti)+1
     found = False
-    for librarii in new_librarii:
-        if librarii == t_new:
+    for carti in new_carti:
+        if carti == t_new:
             return True
     assert found
 
 def test_read():
-    librarii = get_data()
-    some_t = librarii[2]
-    assert read(librarii, get_id(some_t)) == some_t
-    assert read(librarii, None) == librarii
+    carti = get_data()
+    some_t = carti[2]
+    assert read(carti, get_id(some_t)) == some_t
+    assert read(carti, None) == carti
 
 def test_update():
-    librarii = get_data()
+    carti = get_data()
     t_updated = creeaza_carte(1, 'new titlu', 'new gen', 111, 'silver')
-    updated = update(librarii, t_updated)
+    updated = update(carti, t_updated)
     assert t_updated in updated
-    assert t_updated not in librarii
-    assert len(updated) == len(librarii)
+    assert t_updated not in carti
+    assert len(updated) == len(carti)
 
 def test_delete():
-    librarii = get_data()
+    carti = get_data()
     to_delete = 3
-    t_deleted = read(librarii, to_delete)
-    deleted = delete(librarii, to_delete)
+    t_deleted = read(carti, to_delete)
+    deleted = delete(carti, to_delete)
     assert t_deleted not in deleted
-    assert t_deleted in librarii
-    assert len(deleted) == len(librarii)-1
+    assert t_deleted in carti
+    assert len(deleted) == len(carti)-1
 
 def test_crud():
     test_create()
     test_read()
     test_update()
     test_delete()
+    test_discount_pt_reducere()
+    test_modifica_gen_carte()
+    test_pret_minim()

@@ -1,29 +1,39 @@
 
+def creeaza_carte(id_carte, tiltu_carte, gen_carte, pret, tip_reducere_client):
 
-def creeaza_carte(id_carte: int,tiltu_carte: str,gen_carte: str,pret: int,tip_reducere_client: str):
-    lista_librarie= [id_carte, tiltu_carte, gen_carte, pret, tip_reducere_client]
-    return lista_librarie
+    return [str(id_carte), str(tiltu_carte), str(gen_carte), pret, str(tip_reducere_client)]
 
 
-def get_id(lista_librarie):
+def get_id(carte):
 
-    return lista_librarie[0]
+    return carte[0]
 
-def get_titlu_carte(lista_librarie):
 
-    return lista_librarie[1]
+def get_titlu_carte(carte):
 
-def get_gen_carte(lista_librarie):
+    return carte[1]
 
-    return lista_librarie[2]
 
-def get_pret(lista_librarie):
+def get_gen_carte(carte):
 
-     return lista_librarie[3]
+    return carte[2]
 
-def get_tip_reducere_client(lista_librarie):
 
-    return lista_librarie[4]
+def get_pret(carte):
 
-def get_str(librarie):
-    return f'Carte cu id-ul {get_id(librarie)}, cu titlul {get_titlu_carte(librarie)}, genul {get_gen_carte(librarie)}, pretul {get_pret(librarie)} si tipul de reducere {get_tip_reducere_client(librarie)}'
+    return carte[3]
+
+
+def get_tip_reducere_client(carte):
+
+    return carte[4]
+
+
+def get_str(carte):
+    return "Id: {}, titlul: {}, gen: {}, pret: {}, reducere: {}".format(
+        get_id(carte),
+        get_titlu_carte(carte),
+        get_gen_carte(carte),
+        get_pret(carte),
+        get_tip_reducere_client(carte)
+    )
