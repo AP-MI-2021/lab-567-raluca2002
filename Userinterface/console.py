@@ -5,6 +5,7 @@ from Logic.modificare_gen import modifica_gen_carte
 from Logic.pret_minim import pret_minim
 
 
+
 def show_menu():
      print('1. CRUD')
      print('2. Aplica discount de 5% si 10% pentru reducerile de tip silver si gold')
@@ -56,6 +57,7 @@ def handle_pret_minim(carti):
         print(f'Pretul minim pentru genul {gen} este {rez[gen]}')
 
 
+
 def handle_show_all(carti):
      for carte in carti:
          print(get_str(carte))
@@ -64,12 +66,14 @@ def handle_show_all(carti):
 def handle_crud(carti):
 
     while True:
+
         print('1. Adaugare')
         print('2. Modificare')
         print('3. Stergere')
         print('4. Discount')
         print('5. Modificare')
         print('6. Determina')
+        print('y. Command')
         print('a. Afisare')
         print('b. Revenire')
 
