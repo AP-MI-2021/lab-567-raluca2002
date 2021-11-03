@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 
-from Domain.carte import creeaza_carte, get_id
+from Domain.librarie import creeaza_carte, get_id
 from Logic.crud import create, read, update, delete
 from Tests.test_discount_reducere import test_discount_pt_reducere
 from Tests.test_modificare_gen import  test_modifica_gen_carte
@@ -46,8 +46,8 @@ def test_delete():
     t_deleted = read(carti, to_delete)
     deleted = delete(carti, to_delete)
     assert t_deleted not in deleted
-    assert t_deleted in carti
-    assert len(deleted) == len(carti)-1
+    assert t_deleted not in carti
+    assert len(deleted) == len(carti)
 
 def test_crud():
     test_create()

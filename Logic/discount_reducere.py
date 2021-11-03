@@ -1,4 +1,4 @@
-from Domain.carte import get_tip_reducere_client, creeaza_carte, get_pret, get_gen_carte, get_titlu_carte, get_id
+from Domain.librarie import get_tip_reducere_client, creeaza_carte, get_pret, get_gen_carte, get_titlu_carte, get_id
 
 
 def discount_pt_reducere(carti):

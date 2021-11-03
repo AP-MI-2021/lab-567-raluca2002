@@ -1,4 +1,4 @@
-from Domain.carte import get_titlu_carte, creeaza_carte, get_id, get_pret, get_tip_reducere_client
+from Domain.librarie import get_titlu_carte, creeaza_carte, get_id, get_pret, get_tip_reducere_client
 
 
 def modifica_gen_carte(carti, titlu, gen_carte):

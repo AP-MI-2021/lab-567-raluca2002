@@ -1,4 +1,4 @@
-from Domain.carte import get_pret
+from Domain.librarie import get_pret
 from Logic.crud import read, create
 from Logic.discount_reducere import discount_pt_reducere
 

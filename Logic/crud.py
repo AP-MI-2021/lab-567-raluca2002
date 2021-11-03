@@ -1,4 +1,4 @@
-from Domain.carte import creeaza_carte, get_id
+from Domain.librarie import creeaza_carte, get_id
 
 
 def create(lst_carte, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client):
@@ -40,6 +40,7 @@ def update(lst_carte, new_carte):
     :param new_carte: cartea care se va actualiza, id-ul trebuie sa fie unul existent
     :return: o lista cu cartea actualizata
     '''
+
     #lst_librarie = [p1:(1,cartea1), p2:(2, cartea2)], librarie=(2, cartea3)
     new_carti = []
     for carte in lst_carte:
@@ -51,11 +52,12 @@ def update(lst_carte, new_carte):
 
 def delete(lst_carte, id_carte):
     '''
-    TO DO
-    :param lst_carte:
-    :param id_carte:
+    Sterge o carte
+    :param lst_carte: lista cartilor
+    :param id_carte: id-ul cartii care o sa fie sterse
     :return: o lista cu carti fara carti cu id-ul id_carte
     '''
+
     new_carte = []
     for carte in lst_carte:
         if get_id(carte) != id_carte:

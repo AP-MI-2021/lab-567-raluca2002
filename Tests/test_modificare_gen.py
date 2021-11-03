@@ -1,4 +1,4 @@
-from Domain.carte import get_gen_carte
+from Domain.librarie import get_gen_carte
 from Logic.crud import create, read
 from Logic.discount_reducere import discount_pt_reducere
 from Logic.modificare_gen import modifica_gen_carte

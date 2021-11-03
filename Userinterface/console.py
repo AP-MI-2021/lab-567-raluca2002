@@ -1,4 +1,4 @@
-from Domain.carte import get_str, creeaza_carte
+from Domain.librarie import get_str, creeaza_carte
 from Logic.crud import create, update, delete
 from Logic.discount_reducere import discount_pt_reducere
 from Logic.modificare_gen import modifica_gen_carte
@@ -14,28 +14,29 @@ def show_menu():
 
 
 def handle_add(carti):
-     id_carte = input('Dati id-ul cartii: ')
-     titlu_carte = input('Dati numele cartii: ')
-     gen_carte = input('Dati genul cartii: ')
-     pret = float(input('Dati pretul cartii: '))
-     tip_reducere_client = input('Dati tipul reducerii: ')
-     return create(carti, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
+         id_carte = input('Dati id-ul cartii: ')
+         titlu_carte = input('Dati numele cartii: ')
+         gen_carte = input('Dati genul cartii: ')
+         pret = float(input('Dati pretul cartii: '))
+         tip_reducere_client = input('Dati tipul reducerii: ')
+         return create(carti, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
+
 
 def handle_update(carti):
-     id_carte = input('Dati id-ul cartii care se actualizeaza: ')
-     titlu_carte = input('Dati noul nume al cartii: ')
-     gen_carte = input('Dati noul gen al cartii: ')
-     pret = float(input('Dati noul pret al cartii: '))
-     tip_reducere_client = input('Dati noul tip al reducerii: ')
-     return update(carti, creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
-
+         id_carte = input('Dati id-ul cartii care se actualizeaza: ')
+         titlu_carte = input('Dati noul nume al cartii: ')
+         gen_carte = input('Dati noul gen al cartii: ')
+         pret = float(input('Dati noul pret al cartii: '))
+         tip_reducere_client = input('Dati noul tip al reducerii: ')
+         return update(carti, creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
 
 
 def handle_delete(carti):
-     id_carte = input('Dati id-ul cartii care se va sterge: ')
-     carti = delete(carti, id_carte)
-     print('Stergerea a fost efectuata cu succes')
-     return carti
+    id_carte = input('Dati id-ul cartii care se va sterge: ')
+    carti = delete(carti, id_carte)
+    print('Stergerea a fost efectuata cu succes')
+    return carti
+
 
 
 def handle_discount(carti):
@@ -48,10 +49,12 @@ def handle_modificare(carti):
      print('Modificarea a fost efectuata cu succes')
      return modifica_gen_carte(gen_carte, titlu, carti)
 
+
 def handle_pret_minim(carti):
     rez = pret_minim(carti)
     for gen in rez:
-        print('Genul {} are pretul minim de {} '.format(gen, rez[gen]))
+        print(f'Pretul minim pentru genul {gen} este {rez[gen]}')
+
 
 def handle_show_all(carti):
      for carte in carti:

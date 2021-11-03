@@ -1,4 +1,4 @@
-from Domain.carte import get_gen_carte, get_pret
+from Domain.librarie import get_gen_carte, get_pret
 
 
 def pret_minim(carti):
@@ -11,7 +11,7 @@ def pret_minim(carti):
     for vanz in carti:
         gen = get_gen_carte(vanz)
         pret_minim = get_pret(vanz)
-        if gen in rez :
+        if gen in rez:
             if pret_minim < rez[gen]:
                 rez[gen] = pret_minim
         else:
