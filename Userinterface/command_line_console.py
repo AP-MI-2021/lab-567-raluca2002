@@ -1,15 +1,8 @@
 from Logic.crud import create, update, delete, creeaza_carte
 from Domain.librarie import get_str
+from Logic.discount_reducere import discount_pt_reducere
 from Logic.modificare_gen import modifica_gen_carte
 
-
-def show_menu():
-    print('1. CRUD')
-    print('2. Aplica discount de 5% si 10% pentru reducerile de tip silver si gold')
-    print('3. Modifica genul pentru un titlu dat.')
-    print('4. Determina pretul minim pentru fiecare gen')
-    print('y. Comand line console')
-    print('x. Exit')
 
 
 def handle_add(carti, command_line):
@@ -44,6 +37,9 @@ def handle_modificare(carti, command_line):
     print('Modificarea a fost efectuata cu succes')
     return modifica_gen_carte(gen_carte, titlu, carti)
 
+def handle_discount(carti):
+    return discount_pt_reducere(carti)
+
 
 def handle_show_all(carti):
     for carte in carti:
@@ -51,13 +47,12 @@ def handle_show_all(carti):
 
 
 def handle_crud():
-            print(
+     print(
                 """
-                Adaugare carti :id_obiect,nume, descriere, pret_achizitie, locatie
-                Stergere carti : id_obiect
-                Modificare obiect id_obiect,nume, descriere, pret achizitie, locatie
-                Muta toate obiectele dintr-o locatie in alta: locatiedata, locatienoua
-                Concateneaza un string la toate descrierile obiectelor cu un pret mai mare decat o anumita valoare : descriere, valoare" 
+                Adaugare carti :carti, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client
+                Stergere carti : id_carte
+                Modificare carti id_carte
+                Modifica genul pentru un titlu dat.
                 Show all
                 Iesire
                 """
@@ -85,6 +80,7 @@ def runMenu2(lista):
 
                     elif command_line[0] == "Modificare obiect":
                         command_line(lista, command_line)
+
 
                     elif command_line[0] == "Show all":
                         handle_show_all(lista)
