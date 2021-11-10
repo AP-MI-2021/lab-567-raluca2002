@@ -2,7 +2,7 @@ from Domain.librarie import creeaza_carte, get_id
 
 
 def create(lst_carte, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client, undo_list, redo_list):
-    f'''
+    '''
     Creeaza o carte
     :param lst_carte: lista de vanzari
     :param id_carte: string

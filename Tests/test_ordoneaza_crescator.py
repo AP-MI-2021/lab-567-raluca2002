@@ -11,7 +11,7 @@ def get_data():
     ]
 def test_ordoneaza_crescator():
     carti = get_data()
-    carti = ordoneaza_crescator(carti)
+    carti = ordoneaza_crescator(carti, [], [])
     assert len(carti) == 4
     assert get_id(carti[0]) == 3
     assert get_id(carti[1]) == 2

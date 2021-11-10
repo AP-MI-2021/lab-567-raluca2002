@@ -5,7 +5,7 @@ from Logic.crud import create, delete, update
 def help():
     print("Pentru corectitudine, structura comenzii va fi scrisa corect gramatical, cu spatiu dupa fiecare virgula/"
           ", ',' intre argumentele fiecarei comenzi si ';' intre oricare doua comenzi.")
-    print("Dupa ce ati introdus corect toate functiile e care doriti sa le executati, apasati enter.")
+    print("Dupa ce ati introdus corect toate functiile pe care doriti sa le executati, apasati enter.")
     print("Pentru a adauga o vanzare tastati: add, id, titlu, gen, pret, reducere . Reducerea trebuie sa fie none/silver/gold.")
     print("Prentru a sterge o vanzare tastati: delete, id.")
     print("Pentru a modifica o vanzare tastati: update, id, titlu, gen, pret -> float, reducere. Reducerea trebuie sa fie none/silver/gold.")

@@ -1,5 +1,14 @@
 from Domain.librarie import get_gen_carte, get_titlu_carte
 
+def nr_titluri_gen(gen, carti):
+    lst_titluri = []
+    for carte in carti:
+        if get_gen_carte(carte) == gen:
+            lst_titluri.append(get_titlu_carte(carte))
+    set_lst_titluri = set(lst_titluri)
+    lista_fara_duplicare =list(set_lst_titluri)
+    return len(lista_fara_duplicare)
+
 
 def nr_titluri_distincte(carti):
     '''
@@ -8,15 +17,9 @@ def nr_titluri_distincte(carti):
     :return: numarul de titluri distincte pentru fiecare gen
     '''
     rez = {}
-    lst_carti = []
     for carte in carti:
         gen = get_gen_carte(carte)
-        titlu = get_titlu_carte(carte)
-        if gen in rez:
-            if titlu not in lst_carti:
-                lst_carti.append(titlu)
-                rez[gen] = rez[gen] + 1
-        else:
-            rez[gen] = 1
-            lst_carti.append(titlu)
+        if gen not in rez:
+            rez[gen] = nr_titluri_gen(gen, carti)
+
     return rez

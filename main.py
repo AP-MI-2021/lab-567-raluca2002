@@ -20,6 +20,8 @@ def main():
     undo_list = []
     redo_list = []
     carti = create(carti, 1, 'poezii', 'romatic', 45, 'gold', undo_list, redo_list)
+    carti = create(carti, 2, 'Enigma Otiliei', 'realist', 55, 'silver', undo_list, redo_list)
+    carti = create(carti, 3, 'Harap-Alb', 'basm', 34, 'gold', undo_list, redo_list)
 
     while True:
         menus()

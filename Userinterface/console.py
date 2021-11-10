@@ -89,8 +89,8 @@ def handle_pret_minim(carti):
         print(f'Pretul minim pentru genul {gen} este {rez[gen]}')
 
 
-def handle_ordoneaza_crescator(carti):
-    return handle_show_all(ordoneaza_crescator(carti))
+def handle_ordoneaza_crescator(carti, undo_list, redo_list):
+    return handle_show_all(ordoneaza_crescator(carti, undo_list, redo_list))
 
 
 def handle_nr_titluri_distincte(carti):
@@ -148,7 +148,7 @@ def handle_crud(carti, undo_list, redo_list):
         elif optiune == '6':
             carti = handle_pret_minim(carti)
         elif optiune == '7':
-            carti = handle_ordoneaza_crescator(carti)
+            carti = handle_ordoneaza_crescator(carti,undo_list, redo_list)
         elif optiune == '8':
             carti = handle_nr_titluri_distincte(carti)
         elif optiune == 'u':
@@ -177,7 +177,7 @@ def run_ui(carti, undo_list, redo_list):
         elif optiune == '4':
             carti = handle_pret_minim(carti)
         elif optiune == '5':
-            carti = handle_ordoneaza_crescator(carti)
+            carti = handle_ordoneaza_crescator(carti, undo_list, redo_list)
         elif optiune == '6':
             carti = handle_nr_titluri_distincte(carti)
         elif optiune == 'u':
