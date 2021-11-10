@@ -1,5 +1,5 @@
 
-def creeaza_carte(id_carte, tiltu_carte, gen_carte, pret, tip_reducere_client):
+def creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client):
     '''
     Creeaza o lista ce reprezinta o vanzare
     :param id_carte: string
@@ -10,7 +10,14 @@ def creeaza_carte(id_carte, tiltu_carte, gen_carte, pret, tip_reducere_client):
     :return: o lista ce contine o vanzare
     '''
 
-    return [str(id_carte), str(tiltu_carte), str(gen_carte), pret, str(tip_reducere_client)]
+    return [
+        id_carte,
+        titlu_carte,
+        gen_carte,
+        pret,
+        tip_reducere_client,
+        ]
+
 
 
 def get_id(carte):

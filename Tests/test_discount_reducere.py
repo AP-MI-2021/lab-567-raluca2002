@@ -1,14 +1,19 @@
-from Domain.librarie import get_pret
-from Logic.crud import read, create
+from Domain.librarie import creeaza_carte, get_pret
 from Logic.discount_reducere import discount_pt_reducere
 
 
+def get_data():
+    return [
+        creeaza_carte(1, 'v1', 'gen1', 60, 'silver'),
+        creeaza_carte(2, 'v2', 'gen2', 20, 'none'),
+        creeaza_carte(3, 'v3', 'gen3', 12, 'gold'),
+        creeaza_carte(4, 'v4', 'gen4', 34, 'silver'),
+    ]
+
 def test_discount_pt_reducere():
-    lst_carte = []
-    lst_carte = create(lst_carte,'1', 'Mara', 'Drama', 44, 'none')
-    lst_carte = create(lst_carte,'2', 'Razbunarea', 'Fictiune', 15, 'gold')
-    lst_carte = create(lst_carte,'3', 'Ion', 'Dragoste', 30, 'silver')
-    lst_carte = discount_pt_reducere(lst_carte)
-    assert get_pret(read(lst_carte, '1' )) == 44
-    assert get_pret(read(lst_carte, '2')) == 13.50
-    assert get_pret(read(lst_carte, '3')) == 28.50
+    carti = get_data()
+    new_carti = discount_pt_reducere(carti, [], [])
+    assert len(new_carti) == 4
+    assert get_pret(new_carti[0]) == 57
+    assert get_pret(new_carti[1]) == 20
+    assert get_pret(new_carti[2]) == 10.8
