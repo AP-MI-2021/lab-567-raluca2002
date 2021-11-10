@@ -5,7 +5,8 @@ from Tests.test_modificare_gen import test_modifica_gen
 from Tests.test_nr_titluri_distincte import test_nr_titluri_distincte
 from Tests.test_ordoneaza_crescator import test_ordoneaza_crescator
 from Tests.test_pret_minim import test_pret_minim
-from Userinterface.command_line_console import meniu
+from Tests.test_undo_si_redo import test_undo_si_redo
+from Userinterface.command_line_console import new_menu
 from Userinterface.console import run_ui
 from Tests.test_undo_redo import test_undo_redo
 
@@ -29,7 +30,7 @@ def main():
         if optiune == '1':
             carti = run_ui(carti, undo_list, redo_list)
         elif optiune == '2':
-            carti = meniu(carti)
+            carti = new_menu(carti)
         elif optiune == 'x':
             break
         else:
@@ -43,4 +44,5 @@ if __name__ == '__main__':
     test_ordoneaza_crescator()
     test_nr_titluri_distincte()
     test_undo_redo()
+    test_undo_si_redo()
     main()

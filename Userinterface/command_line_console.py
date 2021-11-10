@@ -2,51 +2,88 @@ from Domain.librarie import get_str
 from Logic.crud import create, delete, update
 
 
-def help():
-    print("Pentru corectitudine, structura comenzii va fi scrisa corect gramatical, cu spatiu dupa fiecare virgula/"
-          ", ',' intre argumentele fiecarei comenzi si ';' intre oricare doua comenzi.")
-    print("Dupa ce ati introdus corect toate functiile pe care doriti sa le executati, apasati enter.")
-    print("Pentru a adauga o vanzare tastati: add, id, titlu, gen, pret, reducere . Reducerea trebuie sa fie none/silver/gold.")
-    print("Prentru a sterge o vanzare tastati: delete, id.")
-    print("Pentru a modifica o vanzare tastati: update, id, titlu, gen, pret -> float, reducere. Reducerea trebuie sa fie none/silver/gold.")
-    print("Pentru a afisa toate vanzarile tastati: show_all")
-    print("Pentru a inchide meniul tastati: break.")
-    print("Pentru a inchide consola, tastati: stop.")
+from Domain.librarie import creeaza_carte
+from Logic.crud import create, delete, update
+from Userinterface.console import handle_show_all
 
 
-def show_all(carti):
-    for carte in carti:
-        print(get_str(carte))
-    print()
+def read_list():
+    lst = []
+    lst_str = input("Introduceti comanda respectand instructiunile date: ")
+    lst_str_split = lst_str.split('; ')
+    for comanda in lst_str_split:
+        lst.append(comanda)
+    return lst
 
 
-def meniu(carti):
+def handle_n_add(carti, comanda):
+    try:
+        id_carte = int(comanda[1])
+        titlu_carte = comanda[2]
+        gen_carte = comanda[3]
+        pret = float(comanda[4])
+        tip_reducere_client = comanda[5]
+        return create(carti, id_carte, titlu_carte, gen_carte, pret, tip_reducere_client)
+    except ValueError as ve:
+        print('Eroare: ', ve)
+
+    return carti
+
+
+def handle_n_delete(carti, comanda):
+    try:
+        id_carte = int(comanda[1])
+        carti = delete(carti, id_carte)
+        return carti
+    except ValueError as ve:
+        print('Eroare: ', ve)
+    return carti
+
+
+def handle_n_update(carti, comanda):
+    try:
+        id_carte = int(comanda[1])
+        titlu_carte = comanda[2]
+        gen_carte = comanda[3]
+        pret = float(comanda[4])
+        tip_reducere_client = comanda[5]
+        return update(carti, creeaza_carte(id_carte, titlu_carte, gen_carte, pret, tip_reducere_client))
+    except ValueError as ve:
+        print('Eroare:', ve)
+    return carti
+
+
+def new_menu(carti):
     while True:
-        print("Pentru ajutor, tastati 'help;")
-        optiune = input("Dati optiunea:  ")
-        task = optiune.split("; ")
-        if optiune == 'stop':
+        print("Intr-o linie de comanda se vor scrie comenzile "
+              "care se vor aplica listei, separate prin ';', elementele acestora fiind separate prin ','.")
+        print("Atentie ! Comanda se face prin scrierea cu majuscula si dupa fiecare separator(; si ,) se va pune un spatiu.")
+        print("O comanda care nu se regaseste in lista de mai jos nu va duce la modificarea listei.")
+        print("O comanda trebuie sa aiba toate campurile nenule \n ")
+
+        print("1.Pentru a adauga in lista tastati: Adaugare, id_vanzare(valoare intreaga), titlu, gen, "
+              "pret(valoare reala), tip(none, silver sau gold)")
+        print("2.Pentru stergerea unei carti tastati: Sterge, id_vanzare(valoare intreaga)")
+        print("3.Pentru modificarea unei carti tastati: Modificare, id_vanzare(valoare intreaga), titlu, gen, "
+              "pret(valoare reala), tip(none, silver sau gold)")
+        print("4.Pentru afisarea tuturor cartilor tastati: ShowAll")
+        print("5. Pentru iesire din meniu: Exit ")
+        lst_cmd = read_list()
+        for comanda in lst_cmd:
+            comanda = comanda.split(', ')
+            if (comanda[0] == 'Adaugare'):
+                carti = handle_n_add(carti, comanda)
+            elif (comanda[0] == 'Sterge'):
+                carti = handle_n_delete(carti, comanda)
+            elif (comanda[0] == 'Modificare'):
+                carti = handle_n_update(carti, comanda)
+            elif (comanda[0] == 'ShowAll'):
+                handle_show_all(carti)
+        if 'Exit' in lst_cmd:
             break
-        for elem in task:
-            comenzi = elem.split(', ')
-            if comenzi[0].lower() == 'help':
-                help()
-            elif comenzi[0].lower() == 'add':
-                try:
-                    carti = create(carti, comenzi[1], comenzi[2], comenzi[3], comenzi[4], comenzi[5])
-                except ValueError as ve:
-                    print("Eroare : ", ve)
-            elif comenzi[0].lower() == 'delete':
-                try:
-                 carti = delete(carti, comenzi[1])
-                except ValueError as ve:
-                    print("Eroare : ", ve)
-            elif comenzi[0].lower() == "update":
-                carti = update(carti, comenzi[1], comenzi[2], comenzi[3], comenzi[4], comenzi[5])
-            elif comenzi[0].lower() == 'show_all':
-                show_all(carti)
-            else:
-                print("Optiune invalida! Alegeti alta sau incercati help pentru mai multe indicatii")
+
+
+
 
 
 
